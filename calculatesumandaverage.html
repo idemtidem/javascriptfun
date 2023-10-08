@@ -15,15 +15,22 @@
     Average: 2.5
     */
     function calculateSumAndAverage(input) {
+        console.log('input: ', input);
         // separate numbers out of the input string based on spaces, assuming user entered proper input, no error handling is happening
         // note that once split, the individual numbers are still represented as strings rather than numbers
         const numbers = input.split(' ');
+        
+        console.log('Enter loop');
 
         for (const strNum in numbers) {
+           console.log('strNum: ', strNum);
            // for each string number in the numbers array, convert the string into a number before doing calculation
            // conversion is important because adding two strings together, i.e. "3" + "4" would result in the string "34"
            // whereas we are doing a math problem and we want to calculate 3+4 and have that be equal to 7
            const number = parseInt (strNum);
+           
+           
+           console.log('number: ', strNum);
 
            // now we have to test what number we are working with
            // let's start with -1 because if we got -1 then we can calculate the sum and average and end this loop
@@ -47,6 +54,10 @@
                // increase the count by 1 since we just counted one of the numbers and we'll need that to calculate the average at the end
                count++; 
            }
+           
+           
+           console.log('progress sum: ', sum);
+           console.log('progress count: ', count);
         }
     }
 
