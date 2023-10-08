@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculation</title>
+  <script>
+    let sum = 0;
+    let count = 0;
+
+    /*
+    Expected input would be:
+    1 2 3 4 -1
+
+    Expected output would be:
+    Sum: 10
+    Average: 2.5
+    */
+    function calculateSumAndAverage(input) {
+        // separate numbers out of the input string based on spaces, assuming user entered proper input, no error handling is happening
+        // note that once split, the individual numbers are still represented as strings rather than numbers
+        const numbers = input.split(' ');
+
+        for (const strNum in numbers) {
+           // for each string number in the numbers array, convert the string into a number before doing calculation
+           // conversion is important because adding two strings together, i.e. "3" + "4" would result in the string "34"
+           // whereas we are doing a math problem and we want to calculate 3+4 and have that be equal to 7
+           const number = parseInt (strNum);
+
+           // now we have to test what number we are working with
+           // let's start with -1 because if we got -1 then we can calculate the sum and average and end this loop
+           // for number operations, have to do triple check (===) in javascript
+           if (number === -1) {
+               // if the number is -1 then we are at the end of the set of numbers and can print out sum and average
+               console.log('Sum: ', sum);
+             
+               const average = sum / count;
+               console.log('Average: ', average);
+
+               // zero out the variables so we can start fresh with any new calculations
+               sum = 0;
+               count = 0;
+               average = 0;
+           }
+           else {
+               // add the number to the total sum of numbers
+               sum += number;
+               
+               // increase the count by 1 since we just counted one of the numbers and we'll need that to calculate the average at the end
+               count++; 
+           }
+        }
+    }
+
+    function getUserInput() {
+        const input = prompt("Enter positive integers separated by spaces and end with -1:");
+        calculateSumAndAverage(input);
+    }
+    
+  </script>
+</head>
+<body>
+  <h1>Calculate sum and average</h1>
+  <button onclick="getUserInput()">Let's go</button>
+  <div id="response"></div>
+  
+</body>
+</html>
